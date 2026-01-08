@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="room-detail">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>{{ room.name }}</h1>
+      <p>{{ room.description }}</p>
+
+      <div class="message-list">
+        <h3>Conversation</h3>
+        {% for message in room_messages %}
+        <div class="message-item">
+          {% if request.user == message.user %}
+          <a href="{% url 'update-message' message.id %}" class="btn btn-sm btn-outline-primary me-2">Edit</a>
+          <a href="{% url 'delete-message' message.id %}" class="btn btn-sm btn-outline-danger float-end">Delete</a>
+          {% endif %}
+          <small>@{{ message.user }} {{ message.created|timesince }} ago</small>
+          <p>{{ message.body }}</p>
+        </div>
+        {% endfor %}
+        {% if request.user.is_authenticated %}
+        <div class="message-form">
+          <form method="POST" action="">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="text" name="body" placeholder="Write your message here...." class="form-control">
+              <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="participants">
+        <h4>Participants</h4>
+        {% for participant in participants %}
+        <span class="participant">@{{ participant.username }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+  
+
+

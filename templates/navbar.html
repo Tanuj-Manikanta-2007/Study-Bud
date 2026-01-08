@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark fw-bold" href="/">Study Bud</a>
+    <div class="navbar-nav ms-auto">
+      {% if user.is_authenticated %}
+        <span class="navbar-text text-dark me-3">Welcome, {{ request.user }}</span>
+        <a class="nav-link text-dark" href="{% url 'Logout' %}">Logout</a>
+      {% else %}
+        <a class="nav-link text-dark" href="{% url 'Login' %}">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

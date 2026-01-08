@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="home-container">
+  <div>
+    {% include 'base/topics_component.html' %}
+  </div>
+  <div>
+    <form method="GET" action="{% url 'home' %}" class="mb-3">
+      <input type="text" name="q" placeholder="Search Rooms..." class="form-control search">
+    </form>
+    <a href="{% url 'create-room' %}" class="btn btn-primary mb-3 me-2">Create Room</a>
+    <a href="{% url 'create-topic' %}" class="btn btn-primary mb-3">Create Topic</a>
+    <h5>{{ room_count }} rooms available</h5>
+    <div>
+      {% include 'base/feed_component.html' %}
+    </div>
+  </div>
+  <div>
+    {% include 'base/activity_component.html' %}
+  </div>
+</div>
+{% endblock %}
