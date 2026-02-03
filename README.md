@@ -31,7 +31,7 @@ A Django-based study room discussion platform where users can create, join, and 
 ## 🛠️ Technologies Used
 
 - **Backend:** Django 5.2.8 🐍
-- **Database:** SQLite3 💾
+- **Database:** Postgres SQL 💾
 - **Frontend:** HTML, CSS, JavaScript 🎨
 - **Authentication:** Django's built-in authentication system 🔒
 
@@ -106,7 +106,7 @@ studybud/
 │   └── wsgi.py           # WSGI configuration
 ├── templates/            # Global templates
 ├── static/              # Static files (CSS, JS, images)
-├── db.sqlite3           # SQLite database
+├── db.sqlite3           # SQLite database if you want ot use sqlite or postgres is my choice
 └── manage.py            # Django management script
 ```
 
